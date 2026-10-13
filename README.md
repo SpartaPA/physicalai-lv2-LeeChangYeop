@@ -16,7 +16,7 @@
 
 ### 모듈 3. 컴퓨터 비전
 
-* 제출 폴더: [모듈3_컴퓨터비전](./모듈3_컴퓨터비전)
+* 제출 폴더: [모듈3_컴퓨터비전](https://github.com/SpartaPA/physicalai-lv2-LeeChangYeop/tree/main/lv2_module3)
 
 ### 모듈 4. 자율주행
 
