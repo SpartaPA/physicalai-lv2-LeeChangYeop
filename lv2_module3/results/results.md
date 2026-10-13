@@ -15,7 +15,7 @@
 | 항목 | A 설정 | B 설정 |
 |---|---|---|
 | 변경 파라미터 | HSV 범위 (H, S, V 하한/상한) | HSV 범위 (H, S, V 하한/상한) |
-| 적용값 | Lower [98, 190, 25] ~ Upper [118, 255, 230] | Lower [98, 20, 25] ~ Upper [118, 255, 230]  |
+| 적용값 | Lower `[98, 190, 25]` ~ `Upper [118, 255, 230]` | Lower `[98, 20, 25]` ~ `Upper [118, 255, 230]`  |
 
 > 공통 고정값: blur 5, morph 5 (open 1, close 2), min_area 300px, bbox rotated, resize 원본, max_distance 1.5m, min_fill 0.5
 
@@ -29,12 +29,12 @@
   `/target/debug_mask`: 파란색 목표물 영역이 흰색으로 분리됨
 - **검출 결과:** `/target` (PointStamped) 수신값  
   x(ex) = -0.242, y(ey) = 0.304, z(area) = 0.0269  
-  → 목표물이 화면 중심 기준 좌측 하단에 있으며, 측정 동안 위치가 안정적으로 유지됨 (ex -0.241~-0.244, area 0.0267~0.0270)
+  → 목표물이 화면 중심 기준 좌측 하단에 있으며, 측정 동안 위치가 안정적으로 유지됨 (ex `-0.241`~`-0.244`, area `0.0267`~`0.0270`)
 - **검출 로그:**
-[perception_node] 검출 설정: HSV [98,190,25]~[118,255,230], blur 5, morph 5 (open 1, close 2), min_area 300px, max_distance 1.5m, min_fill 0.5
+[perception_node] 검출 설정: HSV `[98,190,25]`~`[118,255,230]`, blur 5, morph 5 (open 1, close 2), min_area 300px, max_distance 1.5m, min_fill 0.5
 [perception_node] 처리 39프레임 (7.8 FPS), 검출 35, 발행 안 함 0, depth 없음 29
 [center_node] TARGET: ex=-0.242 ey=0.304 area=0.0269
-  → 약 35초 동안 186프레임 중 160프레임 검출 (검출률 86.0%, 4.0~7.8 FPS)
+  → 약 35초 동안 186프레임 중 160프레임 검출 (검출률 86.0%, `4.0`~`7.8` FPS)
 
 ### 2.3. B 설정 수신 기록
 - **Raw Image Debug:** ![B_debug](images/exp1_B_debug.png)  
@@ -45,14 +45,14 @@
   `/target/debug_mask`: S 하한을 190에서 20으로 낮추자 채도가 낮은 목표물 가장자리와 그림자까지 흰색으로 남음. 화면 상단 중앙의 배경 일부도 흰색으로 남음
 - **검출 결과:** `/target` (PointStamped) 수신값  
   x(ex) = -0.247, y(ey) = 0.290, z(area) = 0.0443  
-  → 위치는 A와 비슷하지만 area가 0.027에서 0.041~0.047로 약 1.6배 커짐. 위치 흔들림도 커짐 (ex -0.206~-0.271, ey 0.275~0.350)  
+  → 위치는 A와 비슷하지만 area가 0.027에서 `0.041`~`0.047`로 약 1.6배 커짐. 위치 흔들림도 커짐 (ex `-0.206`~`-0.271`, ey `0.275`~`0.350`)  
   → 오검출 발생: 목표물이 아닌 화면 상단 영역이 잡힘 (ex ≈ -0.02, ey ≈ -0.52, area ≈ 0.0015)
 - **검출 로그:**
-[perception_node] 검출 설정: HSV [98,20,25]~[118,255,230], blur 5, morph 5 (open 1, close 2), min_area 300px, max_distance 1.5m, min_fill 0.5
+[perception_node] 검출 설정: HSV `[98,20,25]`~`[118,255,230]`, blur 5, morph 5 (open 1, close 2), min_area 300px, max_distance 1.5m, min_fill 0.5
 [perception_node] 처리 38프레임 (7.6 FPS), 검출 31, 발행 안 함 0, depth 없음 33
 [center_node] TARGET: ex=-0.247 ey=0.290 area=0.0443
 [center_node] TARGET: ex=-0.021 ey=-0.538 area=0.0018   ← 오검출
-  → 약 40초 동안 199프레임 중 168프레임 검출 (검출률 84.4%, 3.2~7.6 FPS)
+  → 약 40초 동안 199프레임 중 168프레임 검출 (검출률 84.4%, `3.2`~`7.6` FPS)
 
 
 ## 3. 실험 2 — 후보 영역 필터 설정 변경
@@ -65,7 +65,7 @@
 | 변경 파라미터 | `min_fill_ratio` (채움률 = 컨투어 면적 / 회전 bbox 면적) | `min_fill_ratio` (채움률 = 컨투어 면적 / 회전 bbox 면적) |
 | 적용값 | 0.5 | 0.95 |
 
-> 공통 고정값: HSV [98,190,25]~[118,255,230], blur 5, morph 5 (open 1, close 2), min_area 300px, bbox rotated, resize 원본, max_distance 1.5m
+> 공통 고정값: HSV `[98,190,25]`~`[118,255,230]`, blur 5, morph 5 (open 1, close 2), min_area 300px, bbox rotated, resize 원본, max_distance 1.5m
 
 ### 3.2. A 설정 수신 기록
 
